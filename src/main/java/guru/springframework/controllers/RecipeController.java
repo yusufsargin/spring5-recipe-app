@@ -4,10 +4,7 @@ import guru.springframework.commands.RecipeCommand;
 import guru.springframework.services.RecipeService;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.*;
 
 /**
  * Created by jt on 6/19/17.
@@ -47,5 +44,12 @@ public class RecipeController {
         model.addAttribute("recipe", recipeService.findCommandById(Long.valueOf(id)));
 
         return "recipe/recipeform";
+    }
+
+    @DeleteMapping("recipe/{id}/delete")
+    public String delete(@PathVariable String  id){
+        recipeService.deleteById(Long.valueOf(id));
+
+        return "redirect:/";
     }
 }

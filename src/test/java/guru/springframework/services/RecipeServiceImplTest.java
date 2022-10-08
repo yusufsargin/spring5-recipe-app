@@ -1,6 +1,7 @@
 package guru.springframework.services;
 
 
+import guru.springframework.commands.RecipeCommand;
 import guru.springframework.converters.RecipeCommandToRecipe;
 import guru.springframework.converters.RecipeToRecipeCommand;
 import guru.springframework.domain.Recipe;
@@ -72,4 +73,10 @@ public class RecipeServiceImplTest {
         verify(recipeRepository, never()).findById(anyLong());
     }
 
+    @Test
+    public void deleteRecipeById() throws  Exception {
+        recipeService.deleteById(1L);
+
+        verify(recipeRepository, times(1)).deleteById(anyLong());
+    }
 }
