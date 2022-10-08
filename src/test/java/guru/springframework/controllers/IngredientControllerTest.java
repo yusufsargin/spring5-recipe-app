@@ -146,11 +146,4 @@ public class IngredientControllerTest {
         verify(ingredientService, times(1)).deleteById(anyLong(), anyLong());
 
     }
-
-    @Test
-    public void testNumberFormatException() throws Exception {
-        mockMvc.perform(get("/recipe/asd/image"))
-                .andExpect(status().isBadRequest())
-                .andExpect(view().name("404error"));
-    }
 }
